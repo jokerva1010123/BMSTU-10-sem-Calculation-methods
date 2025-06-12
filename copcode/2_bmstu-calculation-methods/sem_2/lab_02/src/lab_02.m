@@ -1,9 +1,9 @@
 function lab_02()
     clc();
 
-    a = 0;
-    b = 1;
-    eps = 1e-2;
+    a = -1;
+    b = 0;
+    eps = 1e-6;
 
     debugFlag = true;
     delay = 0.5;
@@ -63,7 +63,5 @@ function lab_02()
 end
 
 function y = f(x)
-    y = cosh((3 .* power(x, 3) + 2 .* power(x, 2) - 4 .* x + 5) ./ 3) + tanh((power(x, 3) - 3 .* power(2, 1/2) .* x - 2) ./ (2 .* x + power(2, 1/2))) - 2.5;
-    % при сдаче лабы 
-    % y = 5 - exp(-(power(x - 0.888, 2)));
+    y = sin((power(x, 4) + 4 * power(x, 3)+8*power(x, 2) + 7 * x + 1)/sqrt(11)) - log10((4 * power(x, 5) - 4 * sqrt(10) * power(x, 4) + 8 * power(x, 3) + 5 * power(x, 2) - 5 * sqrt(10) * x + 9)/(power(x, 2) - sqrt(10) * x + 2)) - 1.0;
 end

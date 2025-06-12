@@ -1,12 +1,12 @@
 function lab_03()
     clc();
-
-    a = 0;
-    b = 1;
+    warning("off");
+    a = -1;
+    b = 0;
     eps = 1e-6;
 
     debugFlag = true;
-    delay = 1;
+    delay = 0;
 
     fplot(@f, [a, b]);
     hold on;
@@ -20,8 +20,7 @@ function lab_03()
     x2 = a + tau * l;
     f1 = f(x1);
     f2 = f(x2);
-
-    N = 2;
+    N = 1;
     while true
         if debugFlag
             fprintf('N = %2d:   a = %.10f;   b = %.10f;\n', N, a, b);
@@ -103,8 +102,6 @@ function lab_03()
     a2 = ((f3 - f1) ./ (x3 - x1) - (f2 - f1) ./ (x2 - x1)) ./ (x3 - x2);
     x_line = 1 / 2 .* (x1 + x2 - a1 ./ a2);
     f_line = f(x_line);
-    N = N + 1;
-
     if debugFlag
         plot(x_line, f_line, 'xk');
         pause(delay);
@@ -138,7 +135,7 @@ function lab_03()
             
             if debugFlag
                 hold off;
-                fplot(@f, [0, 1]);
+                fplot(@f, [-1, 0]);
                 hold on;
 
                 scatter(x1, f1, 'b', 'filled');
@@ -174,8 +171,10 @@ function lab_03()
     
     scatter(xStar, fStar, 'r', 'filled');
     fprintf('Ответ:   x* = %.10f;   f(x*) = %.10f.\n\n', xStar, fStar);
+     xStar + 0.777
 end
-
+ 
 function y = f(x)
-    y = cosh((3 .* power(x, 3) + 2 .* power(x, 2) - 4 .* x + 5) ./ 3) + tanh((power(x, 3) - 3 .* power(2, 1/2) .* x - 2) ./ (2 .* x + power(2, 1/2))) - 2.5;
+  y =(x+0.777).^4;  
+%y = sin((power(x, 4) + 4 * power(x, 3)+8*power(x, 2) + 7 * x + 1)/sqrt(11)) - log10((4 * power(x, 5) - 4 * sqrt(10) * power(x, 4) + 8 * power(x, 3) + 5 * power(x, 2) - 5 * sqrt(10) * x + 9)/(power(x, 2) - sqrt(10) * x + 2)) - 1.0;
 end
